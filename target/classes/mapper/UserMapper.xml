@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.finearter.dbs.mapper.UserMapper">
+    <resultMap id="userResultMap" type="com.finearter.dbs.domain.User">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="sex" jdbcType="VARCHAR" property="sex"/>
+        <result column="phone_num" jdbcType="VARCHAR" property="phoneNum"/>
+        <result column="role_id" jdbcType="VARCHAR" property="roleId"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+    </resultMap>
+    <sql id="user_Column_List">
+        id,name,sex,phone_num,role_id,email,password
+    </sql>
+
+
+        <select id="selectAllUsers" resultMap="userResultMap" >
+            select
+            <include refid="user_Column_List"/>
+            from t_user as t where 1=1
+        </select>
+
+
+<!--    <select id="selectAllIndicators" resultMap="indicatorResultMap">-->
+<!--        select-->
+<!--        <include refid="Indicator_Column_List"/>-->
+<!--        <if test="properties!=null and properties.length!=0">-->
+<!--            <foreach collection="properties" item="item" open="," separator="+" close="as keyweight">-->
+<!--                (IF(CONCAT_WS('', indicator_name, indicator_definition,label) LIKE '%${item}%', 1, 0))-->
+<!--            </foreach>-->
+<!--        </if>-->
+<!--        from t_indicator-->
+<!--        <if test="properties!=null and properties.length!=0">-->
+<!--            WHERE-->
+<!--            CONCAT_WS('',indicator_name, indicator_definition,label)-->
+<!--            regexp-->
+<!--            replace(<foreach collection="properties" open="'" item="iter" separator="|" close="'">${iter}</foreach>,' ','')-->
+<!--            ORDER BY keyweight DESC-->
+<!--        </if>-->
+<!--        <if test="properties==null || properties.length==0">-->
+<!--            ORDER by id desc-->
+<!--        </if>-->
+<!--    </select>-->
+
+
+
+
+<!--    <select id="selectById" resultMap="indicatorResultMap" parameterType="Integer" >-->
+<!--        select-->
+<!--        <include refid="Indicator_Column_List"/>-->
+<!--        from t_indicator-->
+<!--        where id=${id}-->
+<!--    </select>-->
+
+<!--    <delete id="deleteById" parameterType="Integer">-->
+<!--        delete from t_indicator where id=${id}-->
+<!--    </delete>-->
+
+<!--    <insert id="insertIndicator" parameterType="com.tc108.indicatorsmanage.domain.Indicator">-->
+<!--        insert into t_indicator(indicator_name, indicator_definition, label) values (#{indicatorName},#{indicatorDefinition},#{label})-->
+<!--    </insert>-->
+
+<!--    <select id="selectByIndicatorName" parameterType="String" resultMap="indicatorResultMap">-->
+<!--        select-->
+<!--        <include refid="Indicator_Column_List"/>-->
+<!--        from t_indicator-->
+<!--        where indicator_name=#{indicatorName}-->
+<!--    </select>-->
+
+<!--    <update id="updateIndicator" parameterType="com.tc108.indicatorsmanage.domain.Indicator">-->
+<!--        update t_indicator set indicator_name=#{indicatorName},indicator_definition=#{indicatorDefinition},label=#{label} where id=#{id}-->
+<!--    </update>-->
+</mapper>

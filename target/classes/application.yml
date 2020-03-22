@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://118.25.192.19/sys_data?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 8023777x.
+  thymeleaf:
+    cache: false
+
+debug: true
+server:
+  port: 8899
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: false
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+logging:
+  level:
+    com.tc108.indicatorsmanage.mapper: debug
