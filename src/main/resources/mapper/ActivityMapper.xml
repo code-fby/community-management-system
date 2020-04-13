@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fby.dbs.mapper.ActivityMapper">
+  <resultMap id="BaseResultMap" type="com.fby.dbs.model.entity.Activity">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="activity_name" jdbcType="VARCHAR" property="activityName" />
+    <result column="activity_status" jdbcType="VARCHAR" property="activityStatus" />
+    <result column="activity_launch_time" jdbcType="TIMESTAMP" property="activityLaunchTime" />
+    <result column="activity_leader" jdbcType="VARCHAR" property="activityLeader" />
+    <result column="activity_start_time" jdbcType="TIMESTAMP" property="activityStartTime" />
+    <result column="activity_end_time" jdbcType="TIMESTAMP" property="activityEndTime" />
+    <result column="activity_profile" jdbcType="VARCHAR" property="activityProfile" />
+    <result column="activity_goal" jdbcType="VARCHAR" property="activityGoal" />
+    <result column="activity_location" jdbcType="VARCHAR" property="activityLocation" />
+    <result column="activity_auditor_id" jdbcType="INTEGER" property="activityAuditorId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, activity_name, activity_status, activity_launch_time, activity_leader, activity_start_time, 
+    activity_end_time, activity_profile, activity_goal, activity_location, activity_auditor_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from activity
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from activity
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.fby.dbs.model.entity.Activity" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into activity (activity_name, activity_status, activity_launch_time, 
+      activity_leader, activity_start_time, activity_end_time, 
+      activity_profile, activity_goal, activity_location, 
+      activity_auditor_id)
+    values (#{activityName,jdbcType=VARCHAR}, #{activityStatus,jdbcType=VARCHAR}, #{activityLaunchTime,jdbcType=TIMESTAMP}, 
+      #{activityLeader,jdbcType=VARCHAR}, #{activityStartTime,jdbcType=TIMESTAMP}, #{activityEndTime,jdbcType=TIMESTAMP}, 
+      #{activityProfile,jdbcType=VARCHAR}, #{activityGoal,jdbcType=VARCHAR}, #{activityLocation,jdbcType=VARCHAR}, 
+      #{activityAuditorId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.fby.dbs.model.entity.Activity" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into activity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="activityName != null">
+        activity_name,
+      </if>
+      <if test="activityStatus != null">
+        activity_status,
+      </if>
+      <if test="activityLaunchTime != null">
+        activity_launch_time,
+      </if>
+      <if test="activityLeader != null">
+        activity_leader,
+      </if>
+      <if test="activityStartTime != null">
+        activity_start_time,
+      </if>
+      <if test="activityEndTime != null">
+        activity_end_time,
+      </if>
+      <if test="activityProfile != null">
+        activity_profile,
+      </if>
+      <if test="activityGoal != null">
+        activity_goal,
+      </if>
+      <if test="activityLocation != null">
+        activity_location,
+      </if>
+      <if test="activityAuditorId != null">
+        activity_auditor_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="activityName != null">
+        #{activityName,jdbcType=VARCHAR},
+      </if>
+      <if test="activityStatus != null">
+        #{activityStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="activityLaunchTime != null">
+        #{activityLaunchTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activityLeader != null">
+        #{activityLeader,jdbcType=VARCHAR},
+      </if>
+      <if test="activityStartTime != null">
+        #{activityStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activityEndTime != null">
+        #{activityEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activityProfile != null">
+        #{activityProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="activityGoal != null">
+        #{activityGoal,jdbcType=VARCHAR},
+      </if>
+      <if test="activityLocation != null">
+        #{activityLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="activityAuditorId != null">
+        #{activityAuditorId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fby.dbs.model.entity.Activity">
+    <!--@mbg.generated-->
+    update activity
+    <set>
+      <if test="activityName != null">
+        activity_name = #{activityName,jdbcType=VARCHAR},
+      </if>
+      <if test="activityStatus != null">
+        activity_status = #{activityStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="activityLaunchTime != null">
+        activity_launch_time = #{activityLaunchTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activityLeader != null">
+        activity_leader = #{activityLeader,jdbcType=VARCHAR},
+      </if>
+      <if test="activityStartTime != null">
+        activity_start_time = #{activityStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activityEndTime != null">
+        activity_end_time = #{activityEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activityProfile != null">
+        activity_profile = #{activityProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="activityGoal != null">
+        activity_goal = #{activityGoal,jdbcType=VARCHAR},
+      </if>
+      <if test="activityLocation != null">
+        activity_location = #{activityLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="activityAuditorId != null">
+        activity_auditor_id = #{activityAuditorId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fby.dbs.model.entity.Activity">
+    <!--@mbg.generated-->
+    update activity
+    set activity_name = #{activityName,jdbcType=VARCHAR},
+      activity_status = #{activityStatus,jdbcType=VARCHAR},
+      activity_launch_time = #{activityLaunchTime,jdbcType=TIMESTAMP},
+      activity_leader = #{activityLeader,jdbcType=VARCHAR},
+      activity_start_time = #{activityStartTime,jdbcType=TIMESTAMP},
+      activity_end_time = #{activityEndTime,jdbcType=TIMESTAMP},
+      activity_profile = #{activityProfile,jdbcType=VARCHAR},
+      activity_goal = #{activityGoal,jdbcType=VARCHAR},
+      activity_location = #{activityLocation,jdbcType=VARCHAR},
+      activity_auditor_id = #{activityAuditorId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fby.dbs.mapper.ClubNewsMappingtableMapper">
+  <resultMap id="BaseResultMap" type="com.fby.dbs.model.entity.ClubNewsMappingtable">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="club_id" jdbcType="INTEGER" property="clubId" />
+    <result column="news_id" jdbcType="INTEGER" property="newsId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, club_id, news_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from club_news_mappingtable
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from club_news_mappingtable
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.fby.dbs.model.entity.ClubNewsMappingtable" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into club_news_mappingtable (club_id, news_id)
+    values (#{clubId,jdbcType=INTEGER}, #{newsId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.fby.dbs.model.entity.ClubNewsMappingtable" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into club_news_mappingtable
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="clubId != null">
+        club_id,
+      </if>
+      <if test="newsId != null">
+        news_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="clubId != null">
+        #{clubId,jdbcType=INTEGER},
+      </if>
+      <if test="newsId != null">
+        #{newsId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fby.dbs.model.entity.ClubNewsMappingtable">
+    <!--@mbg.generated-->
+    update club_news_mappingtable
+    <set>
+      <if test="clubId != null">
+        club_id = #{clubId,jdbcType=INTEGER},
+      </if>
+      <if test="newsId != null">
+        news_id = #{newsId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fby.dbs.model.entity.ClubNewsMappingtable">
+    <!--@mbg.generated-->
+    update club_news_mappingtable
+    set club_id = #{clubId,jdbcType=INTEGER},
+      news_id = #{newsId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

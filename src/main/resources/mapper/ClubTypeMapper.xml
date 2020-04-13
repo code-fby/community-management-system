@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fby.dbs.mapper.ClubTypeMapper">
+  <resultMap id="BaseResultMap" type="com.fby.dbs.model.entity.ClubType">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="club_type_name" jdbcType="VARCHAR" property="clubTypeName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, club_type_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from club_type
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from club_type
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.fby.dbs.model.entity.ClubType" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into club_type (club_type_name)
+    values (#{clubTypeName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.fby.dbs.model.entity.ClubType" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into club_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="clubTypeName != null">
+        club_type_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="clubTypeName != null">
+        #{clubTypeName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fby.dbs.model.entity.ClubType">
+    <!--@mbg.generated-->
+    update club_type
+    <set>
+      <if test="clubTypeName != null">
+        club_type_name = #{clubTypeName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fby.dbs.model.entity.ClubType">
+    <!--@mbg.generated-->
+    update club_type
+    set club_type_name = #{clubTypeName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fby.dbs.mapper.ClubMapper">
+  <resultMap id="BaseResultMap" type="com.fby.dbs.model.entity.Club">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="club_name" jdbcType="VARCHAR" property="clubName" />
+    <result column="club_status" jdbcType="VARCHAR" property="clubStatus" />
+    <result column="club_type_id" jdbcType="INTEGER" property="clubTypeId" />
+    <result column="destory_time" jdbcType="TIMESTAMP" property="destoryTime" />
+    <result column="build_time" jdbcType="TIMESTAMP" property="buildTime" />
+    <result column="club_peoples_num" jdbcType="INTEGER" property="clubPeoplesNum" />
+    <result column="club_profile" jdbcType="VARCHAR" property="clubProfile" />
+    <result column="club_goal" jdbcType="VARCHAR" property="clubGoal" />
+    <result column="club_creator" jdbcType="VARCHAR" property="clubCreator" />
+    <result column="club_auditor_id" jdbcType="INTEGER" property="clubAuditorId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, club_name, club_status, club_type_id, destory_time, build_time, club_peoples_num, 
+    club_profile, club_goal, club_creator, club_auditor_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from club
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from club
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.fby.dbs.model.entity.Club" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into club (club_name, club_status, club_type_id, 
+      destory_time, build_time, club_peoples_num, 
+      club_profile, club_goal, club_creator, 
+      club_auditor_id)
+    values (#{clubName,jdbcType=VARCHAR}, #{clubStatus,jdbcType=VARCHAR}, #{clubTypeId,jdbcType=INTEGER}, 
+      #{destoryTime,jdbcType=TIMESTAMP}, #{buildTime,jdbcType=TIMESTAMP}, #{clubPeoplesNum,jdbcType=INTEGER}, 
+      #{clubProfile,jdbcType=VARCHAR}, #{clubGoal,jdbcType=VARCHAR}, #{clubCreator,jdbcType=VARCHAR}, 
+      #{clubAuditorId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.fby.dbs.model.entity.Club" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into club
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="clubName != null">
+        club_name,
+      </if>
+      <if test="clubStatus != null">
+        club_status,
+      </if>
+      <if test="clubTypeId != null">
+        club_type_id,
+      </if>
+      <if test="destoryTime != null">
+        destory_time,
+      </if>
+      <if test="buildTime != null">
+        build_time,
+      </if>
+      <if test="clubPeoplesNum != null">
+        club_peoples_num,
+      </if>
+      <if test="clubProfile != null">
+        club_profile,
+      </if>
+      <if test="clubGoal != null">
+        club_goal,
+      </if>
+      <if test="clubCreator != null">
+        club_creator,
+      </if>
+      <if test="clubAuditorId != null">
+        club_auditor_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="clubName != null">
+        #{clubName,jdbcType=VARCHAR},
+      </if>
+      <if test="clubStatus != null">
+        #{clubStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="clubTypeId != null">
+        #{clubTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="destoryTime != null">
+        #{destoryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="buildTime != null">
+        #{buildTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clubPeoplesNum != null">
+        #{clubPeoplesNum,jdbcType=INTEGER},
+      </if>
+      <if test="clubProfile != null">
+        #{clubProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="clubGoal != null">
+        #{clubGoal,jdbcType=VARCHAR},
+      </if>
+      <if test="clubCreator != null">
+        #{clubCreator,jdbcType=VARCHAR},
+      </if>
+      <if test="clubAuditorId != null">
+        #{clubAuditorId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fby.dbs.model.entity.Club">
+    <!--@mbg.generated-->
+    update club
+    <set>
+      <if test="clubName != null">
+        club_name = #{clubName,jdbcType=VARCHAR},
+      </if>
+      <if test="clubStatus != null">
+        club_status = #{clubStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="clubTypeId != null">
+        club_type_id = #{clubTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="destoryTime != null">
+        destory_time = #{destoryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="buildTime != null">
+        build_time = #{buildTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clubPeoplesNum != null">
+        club_peoples_num = #{clubPeoplesNum,jdbcType=INTEGER},
+      </if>
+      <if test="clubProfile != null">
+        club_profile = #{clubProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="clubGoal != null">
+        club_goal = #{clubGoal,jdbcType=VARCHAR},
+      </if>
+      <if test="clubCreator != null">
+        club_creator = #{clubCreator,jdbcType=VARCHAR},
+      </if>
+      <if test="clubAuditorId != null">
+        club_auditor_id = #{clubAuditorId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fby.dbs.model.entity.Club">
+    <!--@mbg.generated-->
+    update club
+    set club_name = #{clubName,jdbcType=VARCHAR},
+      club_status = #{clubStatus,jdbcType=VARCHAR},
+      club_type_id = #{clubTypeId,jdbcType=INTEGER},
+      destory_time = #{destoryTime,jdbcType=TIMESTAMP},
+      build_time = #{buildTime,jdbcType=TIMESTAMP},
+      club_peoples_num = #{clubPeoplesNum,jdbcType=INTEGER},
+      club_profile = #{clubProfile,jdbcType=VARCHAR},
+      club_goal = #{clubGoal,jdbcType=VARCHAR},
+      club_creator = #{clubCreator,jdbcType=VARCHAR},
+      club_auditor_id = #{clubAuditorId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

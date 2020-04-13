@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fby.dbs.mapper.StudentPositionMappingtableMapper">
+  <resultMap id="BaseResultMap" type="com.fby.dbs.model.entity.StudentPositionMappingtable">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="stu_id" jdbcType="INTEGER" property="stuId" />
+    <result column="position_id" jdbcType="INTEGER" property="positionId" />
+    <result column="position_start_time" jdbcType="VARCHAR" property="positionStartTime" />
+    <result column="position_end_time" jdbcType="VARCHAR" property="positionEndTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, stu_id, position_id, position_start_time, position_end_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from student_position_mappingtable
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from student_position_mappingtable
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.fby.dbs.model.entity.StudentPositionMappingtable" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into student_position_mappingtable (stu_id, position_id, position_start_time, 
+      position_end_time)
+    values (#{stuId,jdbcType=INTEGER}, #{positionId,jdbcType=INTEGER}, #{positionStartTime,jdbcType=VARCHAR}, 
+      #{positionEndTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.fby.dbs.model.entity.StudentPositionMappingtable" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into student_position_mappingtable
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stuId != null">
+        stu_id,
+      </if>
+      <if test="positionId != null">
+        position_id,
+      </if>
+      <if test="positionStartTime != null">
+        position_start_time,
+      </if>
+      <if test="positionEndTime != null">
+        position_end_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stuId != null">
+        #{stuId,jdbcType=INTEGER},
+      </if>
+      <if test="positionId != null">
+        #{positionId,jdbcType=INTEGER},
+      </if>
+      <if test="positionStartTime != null">
+        #{positionStartTime,jdbcType=VARCHAR},
+      </if>
+      <if test="positionEndTime != null">
+        #{positionEndTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fby.dbs.model.entity.StudentPositionMappingtable">
+    <!--@mbg.generated-->
+    update student_position_mappingtable
+    <set>
+      <if test="stuId != null">
+        stu_id = #{stuId,jdbcType=INTEGER},
+      </if>
+      <if test="positionId != null">
+        position_id = #{positionId,jdbcType=INTEGER},
+      </if>
+      <if test="positionStartTime != null">
+        position_start_time = #{positionStartTime,jdbcType=VARCHAR},
+      </if>
+      <if test="positionEndTime != null">
+        position_end_time = #{positionEndTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fby.dbs.model.entity.StudentPositionMappingtable">
+    <!--@mbg.generated-->
+    update student_position_mappingtable
+    set stu_id = #{stuId,jdbcType=INTEGER},
+      position_id = #{positionId,jdbcType=INTEGER},
+      position_start_time = #{positionStartTime,jdbcType=VARCHAR},
+      position_end_time = #{positionEndTime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
