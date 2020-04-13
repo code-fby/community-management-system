@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fby.dbs.mapper.TeacherMapper">
+  <resultMap id="BaseResultMap" type="com.fby.dbs.model.entity.Teacher">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="teacher_num" jdbcType="INTEGER" property="teacherNum" />
+    <result column="teacher_password" jdbcType="VARCHAR" property="teacherPassword" />
+    <result column="teacher_register_date" jdbcType="TIMESTAMP" property="teacherRegisterDate" />
+    <result column="teacher_name" jdbcType="VARCHAR" property="teacherName" />
+    <result column="teacher_phone" jdbcType="VARCHAR" property="teacherPhone" />
+    <result column="teacher_sex" jdbcType="VARCHAR" property="teacherSex" />
+    <result column="teacher_role_id" jdbcType="INTEGER" property="teacherRoleId" />
+    <result column="teacher_college_id" jdbcType="INTEGER" property="teacherCollegeId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, teacher_num, teacher_password, teacher_register_date, teacher_name, teacher_phone, 
+    teacher_sex, teacher_role_id, teacher_college_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from teacher
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from teacher
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.fby.dbs.model.entity.Teacher" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into teacher (teacher_num, teacher_password, teacher_register_date, 
+      teacher_name, teacher_phone, teacher_sex, 
+      teacher_role_id, teacher_college_id)
+    values (#{teacherNum,jdbcType=INTEGER}, #{teacherPassword,jdbcType=VARCHAR}, #{teacherRegisterDate,jdbcType=TIMESTAMP}, 
+      #{teacherName,jdbcType=VARCHAR}, #{teacherPhone,jdbcType=VARCHAR}, #{teacherSex,jdbcType=VARCHAR}, 
+      #{teacherRoleId,jdbcType=INTEGER}, #{teacherCollegeId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.fby.dbs.model.entity.Teacher" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into teacher
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="teacherNum != null">
+        teacher_num,
+      </if>
+      <if test="teacherPassword != null">
+        teacher_password,
+      </if>
+      <if test="teacherRegisterDate != null">
+        teacher_register_date,
+      </if>
+      <if test="teacherName != null">
+        teacher_name,
+      </if>
+      <if test="teacherPhone != null">
+        teacher_phone,
+      </if>
+      <if test="teacherSex != null">
+        teacher_sex,
+      </if>
+      <if test="teacherRoleId != null">
+        teacher_role_id,
+      </if>
+      <if test="teacherCollegeId != null">
+        teacher_college_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="teacherNum != null">
+        #{teacherNum,jdbcType=INTEGER},
+      </if>
+      <if test="teacherPassword != null">
+        #{teacherPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherRegisterDate != null">
+        #{teacherRegisterDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teacherName != null">
+        #{teacherName,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherPhone != null">
+        #{teacherPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherSex != null">
+        #{teacherSex,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherRoleId != null">
+        #{teacherRoleId,jdbcType=INTEGER},
+      </if>
+      <if test="teacherCollegeId != null">
+        #{teacherCollegeId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fby.dbs.model.entity.Teacher">
+    <!--@mbg.generated-->
+    update teacher
+    <set>
+      <if test="teacherNum != null">
+        teacher_num = #{teacherNum,jdbcType=INTEGER},
+      </if>
+      <if test="teacherPassword != null">
+        teacher_password = #{teacherPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherRegisterDate != null">
+        teacher_register_date = #{teacherRegisterDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teacherName != null">
+        teacher_name = #{teacherName,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherPhone != null">
+        teacher_phone = #{teacherPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherSex != null">
+        teacher_sex = #{teacherSex,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherRoleId != null">
+        teacher_role_id = #{teacherRoleId,jdbcType=INTEGER},
+      </if>
+      <if test="teacherCollegeId != null">
+        teacher_college_id = #{teacherCollegeId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fby.dbs.model.entity.Teacher">
+    <!--@mbg.generated-->
+    update teacher
+    set teacher_num = #{teacherNum,jdbcType=INTEGER},
+      teacher_password = #{teacherPassword,jdbcType=VARCHAR},
+      teacher_register_date = #{teacherRegisterDate,jdbcType=TIMESTAMP},
+      teacher_name = #{teacherName,jdbcType=VARCHAR},
+      teacher_phone = #{teacherPhone,jdbcType=VARCHAR},
+      teacher_sex = #{teacherSex,jdbcType=VARCHAR},
+      teacher_role_id = #{teacherRoleId,jdbcType=INTEGER},
+      teacher_college_id = #{teacherCollegeId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <resultMap id="teacherResultMap" type="com.fby.dbs.model.entity.Teacher">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="teacher_num" jdbcType="INTEGER" property="teacherNum" />
+        <result column="teacher_password" jdbcType="VARCHAR" property="teacherPassword" />
+        <result column="teacher_register_date" jdbcType="DATE" property="teacherRegisterDate" />
+        <result column="teacher_name" jdbcType="VARCHAR" property="teacherName" />
+        <result column="teacher_phone" jdbcType="VARCHAR" property="teacherPhone" />
+        <result column="teacher_sex" jdbcType="VARCHAR" property="teacherSex" />
+        <result column="teacher_college" jdbcType="VARCHAR" property="teacherCollege" />
+        <result column="teacher_role_id" jdbcType="INTEGER" property="teacherRoleId" />
+    </resultMap>
+    <sql id="teacher_Column_List">
+        id,teacher_num,teacher_password,teacher_register_date,teacher_name,teacher_phone,teacher_sex,teacher_college,teacher_role_id
+    </sql>
+
+
+        <select id="selectAllTeachers" resultMap="teacherResultMap">
+            select
+            <include refid="teacher_Column_List" />
+            from teacher as t where 1=1
+        </select>
+
+
+<!--    &amp;amp;lt;select id="selectAllIndicators" resultMap="indicatorResultMap"&amp;amp;gt;-->
+<!--        select-->
+<!--        &amp;amp;lt;include refid="Indicator_Column_List"/&amp;amp;gt;-->
+<!--        &amp;amp;lt;if test="properties!=null and properties.length!=0"&amp;amp;gt;-->
+<!--            &amp;amp;lt;foreach collection="properties" item="item" open="," separator="+" close="as keyweight"&amp;amp;gt;-->
+<!--                (IF(CONCAT_WS('', indicator_name, indicator_definition,label) LIKE '%${item}%', 1, 0))-->
+<!--            &amp;amp;lt;/foreach&amp;amp;gt;-->
+<!--        &amp;amp;lt;/if&amp;amp;gt;-->
+<!--        from t_indicator-->
+<!--        &amp;amp;lt;if test="properties!=null and properties.length!=0"&amp;amp;gt;-->
+<!--            WHERE-->
+<!--            CONCAT_WS('',indicator_name, indicator_definition,label)-->
+<!--            regexp-->
+<!--            replace(&amp;amp;lt;foreach collection="properties" open="'" item="iter" separator="|" close="'"&amp;amp;gt;${iter}&amp;amp;lt;/foreach&amp;amp;gt;,' ','')-->
+<!--            ORDER BY keyweight DESC-->
+<!--        &amp;amp;lt;/if&amp;amp;gt;-->
+<!--        &amp;amp;lt;if test="properties==null || properties.length==0"&amp;amp;gt;-->
+<!--            ORDER by id desc-->
+<!--        &amp;amp;lt;/if&amp;amp;gt;-->
+<!--    &amp;amp;lt;/select&amp;amp;gt;-->
+
+
+
+
+<!--    &amp;amp;lt;select id="selectById" resultMap="indicatorResultMap" parameterType="Integer" &amp;amp;gt;-->
+<!--        select-->
+<!--        &amp;amp;lt;include refid="Indicator_Column_List"/&amp;amp;gt;-->
+<!--        from t_indicator-->
+<!--        where id=${id}-->
+<!--    &amp;amp;lt;/select&amp;amp;gt;-->
+
+<!--    &amp;amp;lt;delete id="deleteById" parameterType="Integer"&amp;amp;gt;-->
+<!--        delete from t_indicator where id=${id}-->
+<!--    &amp;amp;lt;/delete&amp;amp;gt;-->
+
+<!--    &amp;amp;lt;insert id="insertIndicator" parameterType="com.tc108.indicatorsmanage.domain.Indicator"&amp;amp;gt;-->
+<!--        insert into t_indicator(indicator_name, indicator_definition, label) values (#{indicatorName},#{indicatorDefinition},#{label})-->
+<!--    &amp;amp;lt;/insert&amp;amp;gt;-->
+
+<!--    &amp;amp;lt;select id="selectByIndicatorName" parameterType="String" resultMap="indicatorResultMap"&amp;amp;gt;-->
+<!--        select-->
+<!--        &amp;amp;lt;include refid="Indicator_Column_List"/&amp;amp;gt;-->
+<!--        from t_indicator-->
+<!--        where indicator_name=#{indicatorName}-->
+<!--    &amp;amp;lt;/select&amp;amp;gt;-->
+
+<!--    &amp;amp;lt;update id="updateIndicator" parameterType="com.tc108.indicatorsmanage.domain.Indicator"&amp;amp;gt;-->
+<!--        update t_indicator set indicator_name=#{indicatorName},indicator_definition=#{indicatorDefinition},label=#{label} where id=#{id}-->
+<!--    &amp;amp;lt;/update&amp;amp;gt;-->
+</mapper>

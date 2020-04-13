@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://118.25.192.19/sys_data?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://118.25.192.19/club_sys?useUnicode=true&characterEncoding=utf8
     username: root
     password: 8023777x.
   thymeleaf:
