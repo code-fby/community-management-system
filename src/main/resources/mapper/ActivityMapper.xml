@@ -163,4 +163,14 @@
       activity_auditor_id = #{activityAuditorId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <select id="selectByAnyCondition" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List"/>
+      from activity
+      where 1=1
+      <if test="activityName != null and activityName != ''">
+        and activity_name like '%${activityName}%'
+      </if>
+
+    </select>
 </mapper>

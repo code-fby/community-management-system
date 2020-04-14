@@ -1,5 +1,6 @@
 package com.fby.dbs.service.impl;
 
+import com.fby.dbs.constants.RoleConstants;
 import com.fby.dbs.mapper.MajorMapper;
 import com.fby.dbs.mapper.RoleMapper;
 import com.fby.dbs.mapper.StudentMapper;
@@ -13,6 +14,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Date;
 
 /**
  * @author fby
@@ -98,8 +101,16 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public int insertSelective(Student record) {
-        return studentMapper.insertSelective(record);
+    public ResultDto insertSelective(Student record) {
+
+        record.setStuRoleId(RoleConstants.USER);
+        Date date = new Date();
+        record.setStuRegisterDate(date);
+        int i = studentMapper.insertSelective(record);
+
+        ResultDto resultDto=new ResultDto();
+        resultDto.setData(i);
+        return resultDto;
     }
 
     @Override

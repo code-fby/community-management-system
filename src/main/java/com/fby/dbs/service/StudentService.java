@@ -12,7 +12,7 @@ public interface StudentService {
 
     int insert(Student record);
 
-    int insertSelective(Student record);
+    ResultDto insertSelective(Student record);
 
     Student selectByPrimaryKey(Integer id);
 

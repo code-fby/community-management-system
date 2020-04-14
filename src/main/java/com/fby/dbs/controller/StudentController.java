@@ -5,10 +5,7 @@ import com.fby.dbs.model.ResultDto;
 import com.fby.dbs.service.StudentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController  //代表 返回的是一个json数据
@@ -25,6 +22,14 @@ public class StudentController {
         ResultDto resultDto = studentService.login(student);
         return resultDto;
     }
+
+
+    @PutMapping("/signin")
+    public ResultDto signIn(Student student){
+        return studentService.insertSelective(student);
+    }
+
+
 
     @GetMapping("/info")
     public ResultDto getStudentInfo(String stuNum) {

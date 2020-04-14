@@ -1,5 +1,6 @@
 package com.fby.dbs.controller;
 
+import com.fby.dbs.model.ResultDto;
 import com.fby.dbs.model.entity.Activity;
 import com.fby.dbs.service.ActivityService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +33,11 @@ public class ActivityController {
     @GetMapping("selectOne")
     public Activity selectOne(Integer id) {
         return this.activityService.selectByPrimaryKey(id);
+    }
+
+    @GetMapping("all")
+    public ResultDto selectAll() {
+        return activityService.selectAll();
     }
 
 }

@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.fby.dbs.model.entity.Teacher">
     <!--@mbg.generated-->
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="teacher_num" jdbcType="INTEGER" property="teacherNum" />
+    <result column="teacher_num" jdbcType="VARCHAR" property="teacherNum" />
     <result column="teacher_password" jdbcType="VARCHAR" property="teacherPassword" />
     <result column="teacher_register_date" jdbcType="TIMESTAMP" property="teacherRegisterDate" />
     <result column="teacher_name" jdbcType="VARCHAR" property="teacherName" />
@@ -147,7 +147,7 @@
         <result column="teacher_name" jdbcType="VARCHAR" property="teacherName" />
         <result column="teacher_phone" jdbcType="VARCHAR" property="teacherPhone" />
         <result column="teacher_sex" jdbcType="VARCHAR" property="teacherSex" />
-        <result column="teacher_college" jdbcType="VARCHAR" property="teacherCollege" />
+        <result column="teacher_college_id" jdbcType="VARCHAR" property="teacherCollegeId" />
         <result column="teacher_role_id" jdbcType="INTEGER" property="teacherRoleId" />
     </resultMap>
     <sql id="teacher_Column_List">
@@ -160,9 +160,21 @@
             <include refid="teacher_Column_List" />
             from teacher as t where 1=1
         </select>
+    <select id="selectByAnyCondition" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List"/>
+      from teacher
+      where 1=1
+      <if test="teacherNum != null and teacherNum != ''">
+        and teacher_num=#{teacherNum}
+      </if>
+      <if test="teacherPassword != null and teacherPassword != ''">
+        and teacher_password=#{teacherPassword}
+      </if>
+    </select>
 
 
-<!--    &amp;amp;lt;select id="selectAllIndicators" resultMap="indicatorResultMap"&amp;amp;gt;-->
+    <!--    &amp;amp;lt;select id="selectAllIndicators" resultMap="indicatorResultMap"&amp;amp;gt;-->
 <!--        select-->
 <!--        &amp;amp;lt;include refid="Indicator_Column_List"/&amp;amp;gt;-->
 <!--        &amp;amp;lt;if test="properties!=null and properties.length!=0"&amp;amp;gt;-->

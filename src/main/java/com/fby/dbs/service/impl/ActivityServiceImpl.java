@@ -1,11 +1,13 @@
 package com.fby.dbs.service.impl;
 
 import com.fby.dbs.mapper.ActivityMapper;
+import com.fby.dbs.model.ResultDto;
 import com.fby.dbs.model.entity.Activity;
 import com.fby.dbs.service.ActivityService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 
 @Service
 public class ActivityServiceImpl implements ActivityService {
@@ -41,6 +43,14 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     public int updateByPrimaryKey(Activity record) {
         return activityMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public ResultDto selectAll() {
+        ArrayList<Activity> arrayList = activityMapper.selectByAnyCondition(new Activity());
+        ResultDto resultDto = new ResultDto();
+        resultDto.setData(arrayList);
+        return resultDto;
     }
 
 }

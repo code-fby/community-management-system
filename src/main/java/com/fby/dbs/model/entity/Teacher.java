@@ -13,7 +13,7 @@ public class Teacher {
      * 教职工号
      */
     @ApiModelProperty(value = "教职工号")
-    private Integer teacherNum;
+    private String teacherNum;
 
     /**
      * 登录密码
@@ -65,11 +65,11 @@ public class Teacher {
         this.id = id;
     }
 
-    public Integer getTeacherNum() {
+    public String getTeacherNum() {
         return teacherNum;
     }
 
-    public void setTeacherNum(Integer teacherNum) {
+    public void setTeacherNum(String teacherNum) {
         this.teacherNum = teacherNum;
     }
 

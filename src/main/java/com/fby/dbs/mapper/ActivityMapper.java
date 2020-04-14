@@ -2,6 +2,8 @@ package com.fby.dbs.mapper;
 
 import com.fby.dbs.model.entity.Activity;
 
+import java.util.ArrayList;
+
 public interface ActivityMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface ActivityMapper {
     int updateByPrimaryKeySelective(Activity record);
 
     int updateByPrimaryKey(Activity record);
+
+    ArrayList<Activity> selectByAnyCondition(Activity activity);
 }

@@ -10,13 +10,17 @@ public interface TeacherService {
 
     int insert(Teacher record);
 
-    int insertSelective(Teacher record);
+    ResultDto insertSelective(Teacher record);
 
     Teacher selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(Teacher record);
 
     int updateByPrimaryKey(Teacher record);
+
+    ResultDto login(String teacherNum, String password);
+
+    ResultDto info(String teacherNum);
 }
 
 

@@ -1,6 +1,9 @@
 package com.fby.dbs.mapper;
 
-import com.fby.dbs.model.entity.Teacher;import java.util.List;
+import com.fby.dbs.model.entity.Teacher;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public interface TeacherMapper {
     int deleteByPrimaryKey(Integer id);
@@ -16,4 +19,6 @@ public interface TeacherMapper {
     int updateByPrimaryKey(Teacher record);
 
     List<Teacher> selectAllTeachers();
+
+    ArrayList<Teacher> selectByAnyCondition(Teacher teacher);
 }

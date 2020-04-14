@@ -1,5 +1,6 @@
 package com.fby.dbs.service;
 
+import com.fby.dbs.model.ResultDto;
 import com.fby.dbs.model.entity.Activity;
 
 public interface ActivityService {
@@ -17,6 +18,7 @@ public interface ActivityService {
 
     int updateByPrimaryKey(Activity record);
 
+    ResultDto selectAll();
 }
 
 
