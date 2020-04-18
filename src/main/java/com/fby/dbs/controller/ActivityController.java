@@ -36,8 +36,8 @@ public class ActivityController {
     }
 
     @GetMapping("all")
-    public ResultDto selectAll() {
-        return activityService.selectAll();
+    public ResultDto selectAll(Integer pageIndex,Integer pageSize) {
+        return activityService.selectAll(pageIndex,pageSize);
     }
 
 }

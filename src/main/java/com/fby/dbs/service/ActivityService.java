@@ -18,7 +18,7 @@ public interface ActivityService {
 
     int updateByPrimaryKey(Activity record);
 
-    ResultDto selectAll();
+    ResultDto selectAll(Integer pageIndex,Integer pageSize);
 }
 
 

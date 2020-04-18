@@ -4,6 +4,8 @@ import com.fby.dbs.mapper.ActivityMapper;
 import com.fby.dbs.model.ResultDto;
 import com.fby.dbs.model.entity.Activity;
 import com.fby.dbs.service.ActivityService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -46,10 +48,12 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public ResultDto selectAll() {
+    public ResultDto selectAll(Integer pageIndex,Integer pageSize) {
+        PageHelper.startPage(pageIndex,pageSize);
         ArrayList<Activity> arrayList = activityMapper.selectByAnyCondition(new Activity());
+        PageInfo pageInfo=new PageInfo(arrayList);
         ResultDto resultDto = new ResultDto();
-        resultDto.setData(arrayList);
+        resultDto.setData(pageInfo);
         return resultDto;
     }
 
