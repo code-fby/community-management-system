@@ -19,6 +19,10 @@ public interface ActivityService {
     int updateByPrimaryKey(Activity record);
 
     ResultDto selectAll(Integer pageIndex,Integer pageSize);
+
+    ResultDto selectTotalCount();
+
+    ResultDto selectTop10();
 }
 
 

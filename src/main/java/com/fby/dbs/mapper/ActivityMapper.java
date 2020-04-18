@@ -18,4 +18,8 @@ public interface ActivityMapper {
     int updateByPrimaryKey(Activity record);
 
     ArrayList<Activity> selectByAnyCondition(Activity activity);
+
+    Integer selectTotalCount();
+
+    ArrayList<Activity> selectTop10();
 }

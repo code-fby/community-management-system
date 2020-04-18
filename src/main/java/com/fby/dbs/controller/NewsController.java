@@ -40,4 +40,15 @@ public class NewsController {
         return newsService.selectAll(pageIndex,pageSize);
     }
 
+    @GetMapping("selectTop5")
+    public ResultDto selectTop5(){
+        return newsService.selectTop5();
+    }
+
+
+    @GetMapping("selectTotalCount")
+    public ResultDto selectTotalCount(){
+        return newsService.selectTotalCount();
+    }
+
 }

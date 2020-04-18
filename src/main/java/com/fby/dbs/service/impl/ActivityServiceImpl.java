@@ -9,6 +9,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 @Service
@@ -55,6 +56,20 @@ public class ActivityServiceImpl implements ActivityService {
         ResultDto resultDto = new ResultDto();
         resultDto.setData(pageInfo);
         return resultDto;
+    }
+
+    @Override
+    public ResultDto selectTotalCount() {
+        Integer count=activityMapper.selectTotalCount();
+        ResultDto resultDto=new ResultDto();
+        resultDto.setData(count);
+        return resultDto;
+    }
+
+    @Override
+    public ResultDto selectTop10() {
+        ArrayList<Activity> activities=activityMapper.selectTop10();
+        return null;
     }
 
 }

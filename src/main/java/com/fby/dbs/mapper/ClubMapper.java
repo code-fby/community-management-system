@@ -18,4 +18,7 @@ public interface ClubMapper {
     int updateByPrimaryKey(Club record);
 
     ArrayList<Club> selectByAnyCondition(Club club);
+
+    Integer selectTotalCount();
+
 }

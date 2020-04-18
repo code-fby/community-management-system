@@ -173,4 +173,7 @@
       and club_name like '%${clubName}%'
     </if>
   </select>
+  <select id="selectTotalCount" resultType="java.lang.Integer">
+    select count(1) from club
+  </select>
 </mapper>

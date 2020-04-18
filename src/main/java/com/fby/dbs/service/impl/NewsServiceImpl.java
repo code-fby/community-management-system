@@ -58,6 +58,20 @@ public class NewsServiceImpl implements NewsService {
         return resultDto;
     }
 
+    @Override
+    public ResultDto selectTop5() {
+        ArrayList<News> news=newsMapper.selectTop10();
+        ResultDto resultDto=new ResultDto();
+        resultDto.setData(news);
+        return resultDto;
+    }
+
+    @Override
+    public ResultDto selectTotalCount() {
+        Integer count=newsMapper.selectTotalCount();
+        return null;
+    }
+
 }
 
 

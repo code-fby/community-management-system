@@ -40,4 +40,14 @@ public class ActivityController {
         return activityService.selectAll(pageIndex,pageSize);
     }
 
+    @GetMapping("selectTotalCount")
+    public ResultDto selectTotalCount(){
+        return activityService.selectTotalCount();
+    }
+
+    @GetMapping("selectTop10")
+    public ResultDto selectTop10(){
+        return activityService.selectTop10();
+    }
+
 }

@@ -21,6 +21,9 @@ public interface ClubService {
     ResultDto selectAll(Integer pageIndex,Integer pageSize);
 
     ResultDto selectByName(String clubName,Integer pageIndex,Integer pageSize);
+
+    ResultDto selectTotalCount();
+
 }
 
 

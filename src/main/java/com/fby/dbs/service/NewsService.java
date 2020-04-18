@@ -20,6 +20,10 @@ public interface NewsService {
 
     ResultDto selectAll(Integer pageIndex,Integer pageSize);
 
+    ResultDto selectTop5();
+
+    ResultDto selectTotalCount();
+
 }
 
 

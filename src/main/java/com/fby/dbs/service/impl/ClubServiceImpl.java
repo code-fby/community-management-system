@@ -75,6 +75,14 @@ public class ClubServiceImpl implements ClubService {
 
     }
 
+    @Override
+    public ResultDto selectTotalCount() {
+        Integer count=clubMapper.selectTotalCount();
+        ResultDto resultDto=new ResultDto();
+        resultDto.setData(count);
+        return resultDto;
+    }
+
 }
 
 

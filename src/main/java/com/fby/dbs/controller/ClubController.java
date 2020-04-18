@@ -42,6 +42,12 @@ public class ClubController {
         return  clubService.selectByName(clubName,pageIndex,pageSize);
     }
 
+
+    @GetMapping("selectTotalCount")
+    public ResultDto selectTotalCount(){
+        return clubService.selectTotalCount();
+    }
+
     @GetMapping("all")
     public ResultDto selectAll(Integer pageIndex,Integer pageSize) {
         return clubService.selectAll(pageIndex,pageSize);

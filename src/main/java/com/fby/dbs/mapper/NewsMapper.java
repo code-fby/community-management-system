@@ -19,4 +19,7 @@ public interface NewsMapper {
 
     ArrayList<News> selectByAnyCondition(News news);
 
+    ArrayList<News> selectTop10();
+
+    Integer selectTotalCount();
 }
