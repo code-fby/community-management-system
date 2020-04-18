@@ -12,7 +12,7 @@
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--@mbg.generated-->
-    select 
+    select
     <include refid="Base_Column_List" />
     from college
     where id = #{id,jdbcType=INTEGER}
@@ -57,4 +57,11 @@
     set college_name = #{collegeName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByAnyCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from college
+      where 1=1
+  </select>
 </mapper>

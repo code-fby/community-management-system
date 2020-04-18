@@ -1,11 +1,13 @@
 package com.fby.dbs.service.impl;
 
 import com.fby.dbs.mapper.CollegeMapper;
+import com.fby.dbs.model.ResultDto;
 import com.fby.dbs.model.entity.College;
 import com.fby.dbs.service.CollegeService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 
 @Service
 public class CollegeServiceImpl implements CollegeService {
@@ -41,6 +43,14 @@ public class CollegeServiceImpl implements CollegeService {
     @Override
     public int updateByPrimaryKey(College record) {
         return collegeMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public ResultDto selectAll() {
+        ArrayList<College> arrayList = collegeMapper.selectByAnyCondition(new College());
+        ResultDto resultDto = new ResultDto();
+        resultDto.setData(arrayList);
+        return resultDto;
     }
 
 }

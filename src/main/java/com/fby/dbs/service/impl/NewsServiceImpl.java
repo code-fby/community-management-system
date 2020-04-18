@@ -1,11 +1,13 @@
 package com.fby.dbs.service.impl;
 
 import com.fby.dbs.mapper.NewsMapper;
+import com.fby.dbs.model.ResultDto;
 import com.fby.dbs.model.entity.News;
 import com.fby.dbs.service.NewsService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 
 @Service
 public class NewsServiceImpl implements NewsService {
@@ -41,6 +43,13 @@ public class NewsServiceImpl implements NewsService {
     @Override
     public int updateByPrimaryKey(News record) {
         return newsMapper.updateByPrimaryKey(record);
+    }
+
+    public ResultDto selectAll() {
+        ArrayList<News> arrayList = newsMapper.selectByAnyCondition(new News());
+        ResultDto resultDto = new ResultDto();
+        resultDto.setData(arrayList);
+        return resultDto;
     }
 
 }

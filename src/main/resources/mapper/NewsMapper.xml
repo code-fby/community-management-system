@@ -17,7 +17,7 @@
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--@mbg.generated-->
-    select 
+    select
     <include refid="Base_Column_List" />
     from news
     where id = #{id,jdbcType=INTEGER}
@@ -29,10 +29,10 @@
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.fby.dbs.model.entity.News" useGeneratedKeys="true">
     <!--@mbg.generated-->
-    insert into news (news_title, reading_quantity, dispatch_time, 
+    insert into news (news_title, reading_quantity, dispatch_time,
       post_man_id, news_detail, news_auditor_id
       )
-    values (#{newsTitle,jdbcType=VARCHAR}, #{readingQuantity,jdbcType=VARCHAR}, #{dispatchTime,jdbcType=TIMESTAMP}, 
+    values (#{newsTitle,jdbcType=VARCHAR}, #{readingQuantity,jdbcType=VARCHAR}, #{dispatchTime,jdbcType=TIMESTAMP},
       #{postManId,jdbcType=INTEGER}, #{newsDetail,jdbcType=VARCHAR}, #{newsAuditorId,jdbcType=INTEGER}
       )
   </insert>
@@ -116,4 +116,10 @@
       news_auditor_id = #{newsAuditorId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectByAnyCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from news
+    where 1=1
+  </select>
 </mapper>

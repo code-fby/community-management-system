@@ -1,5 +1,6 @@
 package com.fby.dbs.controller;
 
+import com.fby.dbs.model.ResultDto;
 import com.fby.dbs.model.entity.News;
 import com.fby.dbs.service.NewsService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +33,11 @@ public class NewsController {
     @GetMapping("selectOne")
     public News selectOne(Integer id) {
         return this.newsService.selectByPrimaryKey(id);
+    }
+
+    @GetMapping("all")
+    public ResultDto selectAll() {
+        return newsService.selectAll();
     }
 
 }

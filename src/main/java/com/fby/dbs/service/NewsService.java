@@ -1,5 +1,6 @@
 package com.fby.dbs.service;
 
+import com.fby.dbs.model.ResultDto;
 import com.fby.dbs.model.entity.News;
 
 public interface NewsService {
@@ -16,6 +17,8 @@ public interface NewsService {
     int updateByPrimaryKeySelective(News record);
 
     int updateByPrimaryKey(News record);
+
+    ResultDto selectAll();
 
 }
 

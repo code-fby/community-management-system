@@ -1,5 +1,6 @@
 package com.fby.dbs.controller;
 
+import com.fby.dbs.model.ResultDto;
 import com.fby.dbs.model.entity.Club;
 import com.fby.dbs.service.ClubService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +33,11 @@ public class ClubController {
     @GetMapping("selectOne")
     public Club selectOne(Integer id) {
         return this.clubService.selectByPrimaryKey(id);
+    }
+
+    @GetMapping("all")
+    public ResultDto selectAll() {
+        return clubService.selectAll();
     }
 
 }

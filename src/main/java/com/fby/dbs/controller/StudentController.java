@@ -23,7 +23,11 @@ public class StudentController {
         return resultDto;
     }
 
-
+    /**
+     * 学生注册
+     * @param student
+     * @return
+     */
     @PutMapping("/signin")
     public ResultDto signIn(Student student){
         return studentService.insertSelective(student);
