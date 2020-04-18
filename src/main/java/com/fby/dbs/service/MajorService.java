@@ -1,5 +1,6 @@
 package com.fby.dbs.service;
 
+import com.fby.dbs.model.ResultDto;
 import com.fby.dbs.model.entity.Major;
 
 public interface MajorService {
@@ -17,6 +18,7 @@ public interface MajorService {
 
     int updateByPrimaryKey(Major record);
 
+    ResultDto selectAll();
 }
 
 

@@ -1,11 +1,13 @@
 package com.fby.dbs.service.impl;
 
 import com.fby.dbs.mapper.MajorMapper;
+import com.fby.dbs.model.ResultDto;
 import com.fby.dbs.model.entity.Major;
 import com.fby.dbs.service.MajorService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 
 @Service
 public class MajorServiceImpl implements MajorService {
@@ -43,6 +45,13 @@ public class MajorServiceImpl implements MajorService {
         return majorMapper.updateByPrimaryKey(record);
     }
 
+    @Override
+    public ResultDto selectAll() {
+        ArrayList<Major> arrayList = majorMapper.selectByAnyCondition(new Major());
+        ResultDto resultDto = new ResultDto();
+        resultDto.setData(arrayList);
+        return resultDto;
+    }
 }
 
 

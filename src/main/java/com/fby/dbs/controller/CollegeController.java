@@ -1,5 +1,6 @@
 package com.fby.dbs.controller;
 
+import com.fby.dbs.model.ResultDto;
 import com.fby.dbs.model.entity.College;
 import com.fby.dbs.service.CollegeService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +33,11 @@ public class CollegeController {
     @GetMapping("selectOne")
     public College selectOne(Integer id) {
         return this.collegeService.selectByPrimaryKey(id);
+    }
+
+    @GetMapping("all")
+    public ResultDto selectAll() {
+        return collegeService.selectAll();
     }
 
 }

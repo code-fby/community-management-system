@@ -1,5 +1,6 @@
 package com.fby.dbs.service;
 
+import com.fby.dbs.model.ResultDto;
 import com.fby.dbs.model.entity.Club;
 
 public interface ClubService {
@@ -17,6 +18,7 @@ public interface ClubService {
 
     int updateByPrimaryKey(Club record);
 
+    ResultDto selectAll();
 }
 
 

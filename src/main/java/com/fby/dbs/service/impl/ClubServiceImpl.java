@@ -1,11 +1,13 @@
 package com.fby.dbs.service.impl;
 
 import com.fby.dbs.mapper.ClubMapper;
+import com.fby.dbs.model.ResultDto;
 import com.fby.dbs.model.entity.Club;
 import com.fby.dbs.service.ClubService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 
 @Service
 public class ClubServiceImpl implements ClubService {
@@ -41,6 +43,14 @@ public class ClubServiceImpl implements ClubService {
     @Override
     public int updateByPrimaryKey(Club record) {
         return clubMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public ResultDto selectAll() {
+        ArrayList<Club> arrayList = clubMapper.selectByAnyCondition(new Club());
+        ResultDto resultDto = new ResultDto();
+        resultDto.setData(arrayList);
+        return resultDto;
     }
 
 }

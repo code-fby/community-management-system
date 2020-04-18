@@ -1,5 +1,6 @@
 package com.fby.dbs.controller;
 
+import com.fby.dbs.model.ResultDto;
 import com.fby.dbs.model.entity.Major;
 import com.fby.dbs.service.MajorService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +33,11 @@ public class MajorController {
     @GetMapping("selectOne")
     public Major selectOne(Integer id) {
         return this.majorService.selectByPrimaryKey(id);
+    }
+
+    @GetMapping("all")
+    public ResultDto selectAll() {
+        return majorService.selectAll();
     }
 
 }

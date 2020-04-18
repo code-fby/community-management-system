@@ -1,5 +1,6 @@
 package com.fby.dbs.service;
 
+import com.fby.dbs.model.ResultDto;
 import com.fby.dbs.model.entity.College;
 
 public interface CollegeService {
@@ -17,6 +18,7 @@ public interface CollegeService {
 
     int updateByPrimaryKey(College record);
 
+    ResultDto selectAll();
 }
 
 

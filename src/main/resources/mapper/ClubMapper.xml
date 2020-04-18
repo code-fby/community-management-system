@@ -17,12 +17,12 @@
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, club_name, club_status, club_type_id, destory_time, build_time, club_peoples_num, 
+    id, club_name, club_status, club_type_id, destory_time, build_time, club_peoples_num,
     club_profile, club_goal, club_creator, club_auditor_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--@mbg.generated-->
-    select 
+    select
     <include refid="Base_Column_List" />
     from club
     where id = #{id,jdbcType=INTEGER}
@@ -34,13 +34,13 @@
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.fby.dbs.model.entity.Club" useGeneratedKeys="true">
     <!--@mbg.generated-->
-    insert into club (club_name, club_status, club_type_id, 
-      destory_time, build_time, club_peoples_num, 
-      club_profile, club_goal, club_creator, 
+    insert into club (club_name, club_status, club_type_id,
+      destory_time, build_time, club_peoples_num,
+      club_profile, club_goal, club_creator,
       club_auditor_id)
-    values (#{clubName,jdbcType=VARCHAR}, #{clubStatus,jdbcType=VARCHAR}, #{clubTypeId,jdbcType=INTEGER}, 
-      #{destoryTime,jdbcType=TIMESTAMP}, #{buildTime,jdbcType=TIMESTAMP}, #{clubPeoplesNum,jdbcType=INTEGER}, 
-      #{clubProfile,jdbcType=VARCHAR}, #{clubGoal,jdbcType=VARCHAR}, #{clubCreator,jdbcType=VARCHAR}, 
+    values (#{clubName,jdbcType=VARCHAR}, #{clubStatus,jdbcType=VARCHAR}, #{clubTypeId,jdbcType=INTEGER},
+      #{destoryTime,jdbcType=TIMESTAMP}, #{buildTime,jdbcType=TIMESTAMP}, #{clubPeoplesNum,jdbcType=INTEGER},
+      #{clubProfile,jdbcType=VARCHAR}, #{clubGoal,jdbcType=VARCHAR}, #{clubCreator,jdbcType=VARCHAR},
       #{clubAuditorId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.fby.dbs.model.entity.Club" useGeneratedKeys="true">
@@ -163,4 +163,11 @@
       club_auditor_id = #{clubAuditorId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByAnyCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from club
+    where 1=1
+  </select>
 </mapper>
