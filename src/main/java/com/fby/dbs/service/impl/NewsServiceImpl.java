@@ -4,6 +4,8 @@ import com.fby.dbs.mapper.NewsMapper;
 import com.fby.dbs.model.ResultDto;
 import com.fby.dbs.model.entity.News;
 import com.fby.dbs.service.NewsService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -45,10 +47,14 @@ public class NewsServiceImpl implements NewsService {
         return newsMapper.updateByPrimaryKey(record);
     }
 
-    public ResultDto selectAll() {
+    @Override
+    public ResultDto selectAll(Integer pageIndex, Integer pageSize) {
+        PageHelper.startPage(pageIndex,pageSize);
         ArrayList<News> arrayList = newsMapper.selectByAnyCondition(new News());
+
+        PageInfo pageInfo=new PageInfo(arrayList);
         ResultDto resultDto = new ResultDto();
-        resultDto.setData(arrayList);
+        resultDto.setData(pageInfo);
         return resultDto;
     }
 

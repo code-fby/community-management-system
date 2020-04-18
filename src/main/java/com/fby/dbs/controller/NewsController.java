@@ -36,8 +36,8 @@ public class NewsController {
     }
 
     @GetMapping("all")
-    public ResultDto selectAll() {
-        return newsService.selectAll();
+    public ResultDto selectAll(Integer pageIndex,Integer pageSize) {
+        return newsService.selectAll(pageIndex,pageSize);
     }
 
 }

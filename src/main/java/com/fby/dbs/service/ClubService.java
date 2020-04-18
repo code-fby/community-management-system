@@ -18,7 +18,9 @@ public interface ClubService {
 
     int updateByPrimaryKey(Club record);
 
-    ResultDto selectAll();
+    ResultDto selectAll(Integer pageIndex,Integer pageSize);
+
+    ResultDto selectByName(String clubName,Integer pageIndex,Integer pageSize);
 }
 
 

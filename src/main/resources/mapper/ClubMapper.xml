@@ -169,5 +169,8 @@
     <include refid="Base_Column_List"/>
     from club
     where 1=1
+    <if test="clubName != null and clubName != ''">
+      and club_name like '%${clubName}%'
+    </if>
   </select>
 </mapper>

@@ -4,6 +4,8 @@ import com.fby.dbs.mapper.ClubMapper;
 import com.fby.dbs.model.ResultDto;
 import com.fby.dbs.model.entity.Club;
 import com.fby.dbs.service.ClubService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -45,12 +47,32 @@ public class ClubServiceImpl implements ClubService {
         return clubMapper.updateByPrimaryKey(record);
     }
 
+
+
     @Override
-    public ResultDto selectAll() {
+    public ResultDto selectAll(Integer pageIndex,Integer pageSize) {
+        PageHelper.startPage(pageIndex,pageSize);
         ArrayList<Club> arrayList = clubMapper.selectByAnyCondition(new Club());
+        PageInfo pageInfo=new PageInfo(arrayList);
         ResultDto resultDto = new ResultDto();
-        resultDto.setData(arrayList);
+        resultDto.setData(pageInfo
+        );
         return resultDto;
+    }
+
+    @Override
+    public ResultDto selectByName(String clubName,Integer pageIndex,Integer pageSize) {
+        Club club=new Club();
+        club.setClubName(clubName);
+        PageHelper.startPage(pageIndex,pageSize);
+        ArrayList<Club> clubs = clubMapper.selectByAnyCondition(club);
+        PageInfo pageInfo=new PageInfo(clubs);
+
+        ResultDto resultDto=new ResultDto();
+        resultDto.setData(pageInfo);
+        return resultDto;
+
+
     }
 
 }

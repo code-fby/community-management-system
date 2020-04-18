@@ -18,7 +18,7 @@ public interface NewsService {
 
     int updateByPrimaryKey(News record);
 
-    ResultDto selectAll();
+    ResultDto selectAll(Integer pageIndex,Integer pageSize);
 
 }
 

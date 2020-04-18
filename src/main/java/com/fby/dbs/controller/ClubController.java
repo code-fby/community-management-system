@@ -35,9 +35,16 @@ public class ClubController {
         return this.clubService.selectByPrimaryKey(id);
     }
 
+
+
+    @GetMapping("selectByName")
+    public ResultDto selectByName(String clubName,Integer pageIndex,Integer pageSize){
+        return  clubService.selectByName(clubName,pageIndex,pageSize);
+    }
+
     @GetMapping("all")
-    public ResultDto selectAll() {
-        return clubService.selectAll();
+    public ResultDto selectAll(Integer pageIndex,Integer pageSize) {
+        return clubService.selectAll(pageIndex,pageSize);
     }
 
 }
