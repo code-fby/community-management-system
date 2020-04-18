@@ -1,7 +1,6 @@
 package com.fby.dbs.controller;
 
 import com.fby.dbs.model.ResultDto;
-import com.fby.dbs.model.entity.Activity;
 import com.fby.dbs.service.ActivityService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +30,7 @@ public class ActivityController {
      * @return 单条数据
      */
     @GetMapping("selectOne")
-    public Activity selectOne(Integer id) {
+    public ResultDto selectOne(Integer id) {
         return this.activityService.selectByPrimaryKey(id);
     }
 
@@ -48,6 +47,10 @@ public class ActivityController {
     @GetMapping("selectTop10")
     public ResultDto selectTop10(){
         return activityService.selectTop10();
+    }
+
+    public ResultDto selectById(Integer id){
+        return activityService.selectByPrimaryKey(id);
     }
 
 }

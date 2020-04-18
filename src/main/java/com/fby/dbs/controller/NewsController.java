@@ -1,7 +1,6 @@
 package com.fby.dbs.controller;
 
 import com.fby.dbs.model.ResultDto;
-import com.fby.dbs.model.entity.News;
 import com.fby.dbs.service.NewsService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +30,7 @@ public class NewsController {
      * @return 单条数据
      */
     @GetMapping("selectOne")
-    public News selectOne(Integer id) {
+    public ResultDto selectOne(Integer id) {
         return this.newsService.selectByPrimaryKey(id);
     }
 
@@ -49,6 +48,12 @@ public class NewsController {
     @GetMapping("selectTotalCount")
     public ResultDto selectTotalCount(){
         return newsService.selectTotalCount();
+    }
+
+
+    @GetMapping("selectById")
+    public ResultDto selectById(Integer id){
+        return newsService.selectByPrimaryKey(id);
     }
 
 }

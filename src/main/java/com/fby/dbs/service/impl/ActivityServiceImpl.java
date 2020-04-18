@@ -9,7 +9,6 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 @Service
@@ -34,8 +33,11 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public Activity selectByPrimaryKey(Integer id) {
-        return activityMapper.selectByPrimaryKey(id);
+    public ResultDto selectByPrimaryKey(Integer id) {
+        Activity activity = activityMapper.selectByPrimaryKey(id);
+        ResultDto resultDto=new ResultDto();
+        resultDto.setData(activity);
+        return resultDto;
     }
 
     @Override

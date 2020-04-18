@@ -12,7 +12,7 @@ public interface ActivityService {
 
     int insertSelective(Activity record);
 
-    Activity selectByPrimaryKey(Integer id);
+    ResultDto selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(Activity record);
 

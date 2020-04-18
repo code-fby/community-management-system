@@ -33,8 +33,11 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public News selectByPrimaryKey(Integer id) {
-        return newsMapper.selectByPrimaryKey(id);
+    public ResultDto selectByPrimaryKey(Integer id) {
+        News news = newsMapper.selectByPrimaryKey(id);
+        ResultDto resultDto=new ResultDto();
+        resultDto.setData(news);
+        return resultDto;
     }
 
     @Override

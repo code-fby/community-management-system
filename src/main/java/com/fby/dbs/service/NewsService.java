@@ -12,7 +12,7 @@ public interface NewsService {
 
     int insertSelective(News record);
 
-    News selectByPrimaryKey(Integer id);
+    ResultDto selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(News record);
 
