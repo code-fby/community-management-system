@@ -33,8 +33,11 @@ public class ClubServiceImpl implements ClubService {
     }
 
     @Override
-    public Club selectByPrimaryKey(Integer id) {
-        return clubMapper.selectByPrimaryKey(id);
+    public ResultDto selectByPrimaryKey(Integer id) {
+        Club club = clubMapper.selectByPrimaryKey(id);
+        ResultDto resultDto=new ResultDto();
+        resultDto.setData(club);
+        return resultDto;
     }
 
     @Override

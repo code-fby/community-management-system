@@ -1,7 +1,6 @@
 package com.fby.dbs.controller;
 
 import com.fby.dbs.model.ResultDto;
-import com.fby.dbs.model.entity.Club;
 import com.fby.dbs.service.ClubService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,16 +23,6 @@ public class ClubController {
     @Resource
     private ClubService clubService;
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("selectOne")
-    public Club selectOne(Integer id) {
-        return this.clubService.selectByPrimaryKey(id);
-    }
 
 
 
@@ -52,5 +41,14 @@ public class ClubController {
     public ResultDto selectAll(Integer pageIndex,Integer pageSize) {
         return clubService.selectAll(pageIndex,pageSize);
     }
+
+    @GetMapping("selectById")
+    public ResultDto selectById(Integer id){
+        return clubService.selectByPrimaryKey(id);
+    }
+
+
+
+
 
 }

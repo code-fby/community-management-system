@@ -12,7 +12,7 @@ public interface ClubService {
 
     int insertSelective(Club record);
 
-    Club selectByPrimaryKey(Integer id);
+    ResultDto selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(Club record);
 

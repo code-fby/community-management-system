@@ -1,8 +1,13 @@
 package com.fby.dbs.service.impl;
 
 import com.fby.dbs.mapper.NewsMapper;
+import com.fby.dbs.mapper.StudentMapper;
+import com.fby.dbs.mapper.TeacherMapper;
 import com.fby.dbs.model.ResultDto;
 import com.fby.dbs.model.entity.News;
+import com.fby.dbs.model.entity.Student;
+import com.fby.dbs.model.entity.Teacher;
+import com.fby.dbs.model.vo.NewsVo;
 import com.fby.dbs.service.NewsService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -16,6 +21,13 @@ public class NewsServiceImpl implements NewsService {
 
     @Resource
     private NewsMapper newsMapper;
+
+    @Resource
+    private StudentMapper studentMapper;
+
+    @Resource
+    private TeacherMapper teacherMapper;
+
 
     @Override
     public int deleteByPrimaryKey(Integer id) {
@@ -35,9 +47,29 @@ public class NewsServiceImpl implements NewsService {
     @Override
     public ResultDto selectByPrimaryKey(Integer id) {
         News news = newsMapper.selectByPrimaryKey(id);
+
+        NewsVo newsVo=newsConvertNewsVo(news);
         ResultDto resultDto=new ResultDto();
-        resultDto.setData(news);
+        resultDto.setData(newsVo);
         return resultDto;
+    }
+
+    private NewsVo newsConvertNewsVo(News news) {
+        NewsVo newsVo = new NewsVo();
+        Student student = studentMapper.selectByPrimaryKey(news.getPostManId());
+
+        Teacher teacher = teacherMapper.selectByPrimaryKey(news.getNewsAuditorId());
+
+        newsVo.setDispatchTime(news.getDispatchTime());
+        newsVo.setId(news.getId());
+        newsVo.setNewsDetail(news.getNewsDetail());
+        newsVo.setNewsProfile(news.getNewsProfile());
+        newsVo.setNewsTitle(news.getNewsTitle());
+        newsVo.setReadingQuantity(news.getReadingQuantity());
+        newsVo.setStudent(student);
+        newsVo.setNewsAuditor(teacher);
+
+        return newsVo;
     }
 
     @Override
@@ -72,7 +104,9 @@ public class NewsServiceImpl implements NewsService {
     @Override
     public ResultDto selectTotalCount() {
         Integer count=newsMapper.selectTotalCount();
-        return null;
+        ResultDto resultDto=new ResultDto();
+        resultDto.setData(count);
+        return resultDto;
     }
 
 }
