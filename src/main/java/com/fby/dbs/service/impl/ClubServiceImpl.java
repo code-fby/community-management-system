@@ -1,8 +1,10 @@
 package com.fby.dbs.service.impl;
 
 import com.fby.dbs.mapper.ClubMapper;
+import com.fby.dbs.mapper.StudentClubMappingtableMapper;
 import com.fby.dbs.model.ResultDto;
 import com.fby.dbs.model.entity.Club;
+import com.fby.dbs.model.entity.StudentClubMappingtable;
 import com.fby.dbs.service.ClubService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -16,6 +18,13 @@ public class ClubServiceImpl implements ClubService {
 
     @Resource
     private ClubMapper clubMapper;
+
+
+    @Resource
+    private StudentClubMappingtableMapper studentClubMappingtableMapper;
+
+
+
 
     @Override
     public int deleteByPrimaryKey(Integer id) {
@@ -83,6 +92,50 @@ public class ClubServiceImpl implements ClubService {
         Integer count=clubMapper.selectTotalCount();
         ResultDto resultDto=new ResultDto();
         resultDto.setData(count);
+        return resultDto;
+    }
+
+    @Override
+    public ResultDto selectByStudentId(Integer studentId) {
+        StudentClubMappingtable condition = new StudentClubMappingtable();
+        condition.setStudentId(studentId);
+        ArrayList<StudentClubMappingtable> studentClubMappingtables=studentClubMappingtableMapper.selectByAnyCondition(condition);
+
+        ArrayList<Club> clubs=new ArrayList<>();
+        for(StudentClubMappingtable studentClubMappingtable:studentClubMappingtables){
+            Integer clubId = studentClubMappingtable.getClubId();
+            Club club = clubMapper.selectByPrimaryKey(clubId);
+            clubs.add(club);
+        }
+
+        ResultDto resultDto=new ResultDto();
+        resultDto.setData(clubs);
+
+        return resultDto;
+    }
+
+    @Override
+    public ResultDto joinClub(Integer studentId,Integer clubId) {
+        StudentClubMappingtable studentClubMappingtable = new StudentClubMappingtable();
+        studentClubMappingtable.setStudentId(studentId);
+        studentClubMappingtable.setClubId(clubId);
+        int insert = studentClubMappingtableMapper.insert(studentClubMappingtable);
+
+        ResultDto resultDto = new ResultDto();
+        resultDto.setData(insert);
+        return resultDto;
+    }
+
+    @Override
+    public ResultDto createClub(Club club) {
+
+
+        int insert = clubMapper.insert(club);
+
+        ResultDto resultDto = new ResultDto();
+
+        resultDto.setData(insert);
+
         return resultDto;
     }
 

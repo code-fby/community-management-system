@@ -24,6 +24,11 @@ public interface ClubService {
 
     ResultDto selectTotalCount();
 
+    ResultDto selectByStudentId(Integer studentId);
+
+    ResultDto joinClub(Integer studentId,Integer clubId);
+
+    ResultDto createClub(Club club);
 }
 
 

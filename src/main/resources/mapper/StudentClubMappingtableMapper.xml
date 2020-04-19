@@ -68,4 +68,16 @@
       club_id = #{clubId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <select id="selectByAnyCondition" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List"/>
+      from student_club_mappingtable
+      where 1=1
+      <if test="studentId != null">
+        and student_id=#{studentId}
+      </if>
+      <if test="clubId != null">
+        and club_id=#{c}
+      </if>
+    </select>
 </mapper>

@@ -2,6 +2,8 @@ package com.fby.dbs.mapper;
 
 import com.fby.dbs.model.entity.StudentClubMappingtable;
 
+import java.util.ArrayList;
+
 public interface StudentClubMappingtableMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,7 @@ public interface StudentClubMappingtableMapper {
     int updateByPrimaryKeySelective(StudentClubMappingtable record);
 
     int updateByPrimaryKey(StudentClubMappingtable record);
+
+    ArrayList<StudentClubMappingtable> selectByAnyCondition(StudentClubMappingtable studentClubMappingtable);
+
 }
