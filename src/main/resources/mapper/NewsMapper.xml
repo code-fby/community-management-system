@@ -10,10 +10,11 @@
     <result column="post_man_id" jdbcType="INTEGER" property="postManId" />
     <result column="news_detail" jdbcType="VARCHAR" property="newsDetail" />
     <result column="news_auditor_id" jdbcType="INTEGER" property="newsAuditorId" />
+    <result column="news_profile" jdbcType="VARCHAR" property="newsProfile" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, news_title, reading_quantity, dispatch_time, post_man_id, news_detail, news_auditor_id
+    id, news_title, reading_quantity, dispatch_time, post_man_id, news_detail, news_auditor_id, news_profile
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--@mbg.generated-->

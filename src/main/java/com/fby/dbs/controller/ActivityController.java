@@ -49,6 +49,7 @@ public class ActivityController {
         return activityService.selectTop10();
     }
 
+    @GetMapping("selectById")
     public ResultDto selectById(Integer id){
         return activityService.selectByPrimaryKey(id);
     }

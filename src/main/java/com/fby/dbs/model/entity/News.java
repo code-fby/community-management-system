@@ -40,10 +40,25 @@ public class News {
     private String newsDetail;
 
     /**
+     * 新闻简介
+     */
+    @ApiModelProperty(value = "新闻简介")
+    private String newsProfile;
+
+    /**
      * 新闻审核人id
      */
     @ApiModelProperty(value = "新闻审核人id")
     private Integer newsAuditorId;
+
+
+    public String getNewsProfile() {
+        return newsProfile;
+    }
+
+    public void setNewsProfile(String newsProfile) {
+        this.newsProfile = newsProfile;
+    }
 
     public Integer getId() {
         return id;
